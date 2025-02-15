@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
       <Flex
         gap={50}
         align="center"
-        justify="space-between"
+        justify="center"
         py={100}
         flex={1}
         wrap="wrap"
