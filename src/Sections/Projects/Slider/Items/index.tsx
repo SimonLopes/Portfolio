@@ -36,9 +36,9 @@ const SliderItem: React.FC<SliderItemProps> = ({
       maw={250}
     >
       <Card.Section>
-        <Image src={src} alt={`Item ${position}`} height={150} />
+        <Image src={src} alt={`Item ${position}`} height={200} />
       </Card.Section>
-      <Group justify="space-between" mt="md" mb="xs" mih={80} mah={80}>
+      <Group justify="space-between" mih={50} mah={80}>
         <Text fw={500}>{title}</Text>
       </Group>
 

@@ -28,6 +28,7 @@ interface Projects {
 
 interface Technologies {
   title: string;
+  description: string;
 }
 
 interface Contact {

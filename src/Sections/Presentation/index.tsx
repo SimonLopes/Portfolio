@@ -30,7 +30,7 @@ export default function Presentation() {
           direction="column"
           align={{ base: "center", md: "start" }}
           ta={{ base: "center", md: "left" }}
-          mt={{ base: 30, md: 0 }}
+          
         >
           <Text fz={{ base: 30, md: 50 }} fw="lighter">
             <span style={{ fontWeight: 500 }}>{currentText.name}</span>{" "}
@@ -48,6 +48,7 @@ export default function Presentation() {
         <Avatar
           src="./perfil.jpeg"
           size={300}
+          my={30}
           style={{
             boxShadow: "5px 10px 40px rgba(0, 0, 0, 0.5)",
             border: "solid 4px #fff",

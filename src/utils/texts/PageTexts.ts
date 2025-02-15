@@ -98,10 +98,22 @@ export const texts: AllTexts = {
     },
   },
   technologies: {
-    pt: { title: "Tecnologias" },
-    en: { title: "Technologies" },
-    es: { title: "Tecnologías" },
-    fr: { title: "Technologies" },
+    pt: {
+      title: "Tecnologias",
+      description: "Lista de tecnologias utilizadas por mim",
+    },
+    en: {
+      title: "Technologies",
+      description: "List of technologies used by me",
+    },
+    es: {
+      title: "Tecnologías",
+      description: "Lista de tecnologías utilizadas por mí",
+    },
+    fr: {
+      title: "Technologies",
+      description: "Liste des technologies que j'utilise",
+    },
   },
   contact: {
     pt: { title: "Contato e Redes sociais" },

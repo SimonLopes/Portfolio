@@ -1,7 +1,6 @@
+import { Technology } from "../../../data/TechnologiesData/technologiesList";
+
 export interface BannerPorps {
-  icons: {
-    name: string;
-    url: string;
-  }[];
+  icons: Technology[];
   speed: number;
 }

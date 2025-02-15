@@ -1,20 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./styles.css";
 import Slider from "./Slider";
-import { Flex, Text, UnstyledButton } from "@mantine/core";
+import {
+  Flex,
+  Text,
+  UnstyledButton,
+  useMantineColorScheme,
+} from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { getGitHubRepos } from "./services/getRepos";
-import { reposListDTO } from "./List/types";
 import { useLanguage } from "../../Hooks/LanguageProvider";
 import { texts } from "../../utils/texts/PageTexts";
 import { AllTexts, Language } from "../../utils/texts/types";
+import { ProjectsData } from "../../data/ProjectsData/projectsData";
 
 const Projects: React.FC = () => {
   const { language } = useLanguage();
   const { projects }: AllTexts = texts;
   const currentText = projects[language as Language];
+  const { colorScheme } = useMantineColorScheme();
 
-  const [reposList, setReposList] = useState<reposListDTO[]>([]);
   const [sliderPosition, setSliderPosition] = useState(0);
   const sliderRef = useRef(null);
   const startX = useRef(0);
@@ -54,24 +58,6 @@ const Projects: React.FC = () => {
     isDragging.current = false;
   };
 
-  useEffect(() => {
-    getGitHubRepos("SimonLopes").then((repos) => {
-      const reposRes: reposListDTO[] = repos
-        .filter((repo) => repo.description && repo.description.trim() !== "")
-        .map((repo, i) => ({
-          id: i,
-          title: repo.name,
-          description: repo.description,
-          color: "",
-          imageUrl:
-            "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png",
-          link: repo.html_url,
-        }));
-
-      setReposList(reposRes);
-    });
-  }, []);
-
   return (
     <Flex
       className="banner"
@@ -85,9 +71,33 @@ const Projects: React.FC = () => {
       id="projects"
     >
       <Text fz={50}>{currentText.title}</Text>
-      <Flex align="center" justify="center" flex={1} w="100%" mt={-200}>
+      <Flex
+        align="center"
+        justify="center"
+        flex={1}
+        w="100%"
+        mt={-200}
+        className="projects-slider-container"
+      >
         <Flex flex={1} align="center" justify="space-around">
-          <UnstyledButton onClick={prevItem} style={{ zIndex: 2 }}>
+          <UnstyledButton
+            onClick={prevItem}
+            style={{
+              zIndex: 2,
+              borderRadius: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+            }}
+            bg={
+              colorScheme === "dark"
+                ? "rgba(44, 44, 46, 0.9)"
+                : "rgba(217, 217, 217, 0.7)"
+            }
+            w={60}
+            h={60}
+            ta="center"
+          >
             <IconArrowLeft size={50} />
           </UnstyledButton>
           <div
@@ -98,14 +108,17 @@ const Projects: React.FC = () => {
             onMouseLeave={handleMouseUp}
             style={{ cursor: "grab", userSelect: "none" }}
           >
-            <Slider.root quantity={reposList.length} position={sliderPosition}>
-              {reposList.map((item, key) => (
+            <Slider.root
+              quantity={ProjectsData.length}
+              position={sliderPosition}
+            >
+              {ProjectsData.map((item, key) => (
                 <Slider.item
                   key={key}
                   src={item.imageUrl}
                   position={key}
                   title={item.title}
-                  id={key}
+                  id={item.id}
                   description={item.description}
                   imageUrl={item.imageUrl}
                   link={item.link}
@@ -113,7 +126,24 @@ const Projects: React.FC = () => {
               ))}
             </Slider.root>
           </div>
-          <UnstyledButton onClick={nextItem} style={{ zIndex: 2 }}>
+          <UnstyledButton
+            onClick={nextItem}
+            style={{
+              zIndex: 2,
+              borderRadius: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+            }}
+            bg={
+              colorScheme === "dark"
+                ? "rgba(44, 44, 46, 0.9)"
+                : "rgba(217, 217, 217, 0.7)"
+            }
+            w={60}
+            h={60}
+            ta="center"
+          >
             <IconArrowRight size={50} />
           </UnstyledButton>
         </Flex>
