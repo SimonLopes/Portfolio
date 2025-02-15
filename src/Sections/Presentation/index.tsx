@@ -40,6 +40,7 @@ export default function Presentation() {
             fz={{ base: 18, md: 30 }}
             fw="lighter"
             maw={{ base: "100%", md: "60%" }}
+            mb={{ base: 0, md: 50 }}
           >
             {currentText.description}
           </Text>
