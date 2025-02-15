@@ -3,6 +3,7 @@ import React from "react";
 import { useLanguage } from "../../Hooks/LanguageProvider";
 import { texts } from "../../utils/texts/PageTexts";
 import { AllTexts, Language } from "../../utils/texts/types";
+import Reveal from "../../utils/elements/Reveal";
 
 const About: React.FC = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -28,10 +29,12 @@ const About: React.FC = () => {
         align="center"
         ta={{ base: "center", md: "right" }}
       >
-        <Text fz={{ base: 35, sm: 40, md: 50 }} fw="lighter">
-          {currentText.title}{" "}
-          <span style={{ fontWeight: "bold" }}>{currentText.name}</span>
-        </Text>
+        <Reveal withBackground>
+          <Text fz={{ base: 35, sm: 40, md: 50 }} fw="lighter">
+            {currentText.title}{" "}
+            <span style={{ fontWeight: "bold" }}>{currentText.name}</span>
+          </Text>
+        </Reveal>
       </Flex>
 
       <Flex
@@ -45,9 +48,11 @@ const About: React.FC = () => {
           maxWidth: "90%",
         }}
       >
-        <Text fz={{ base: 18, sm: 22, md: 25 }} fw="lighter" ta="center">
-          {currentText.description}
-        </Text>
+        <Reveal withBackground={false}>
+          <Text fz={{ base: 18, sm: 22, md: 25 }} fw="lighter" ta="center">
+            {currentText.description}
+          </Text>
+        </Reveal>
       </Flex>
     </Flex>
   );

@@ -12,6 +12,7 @@ import { useLanguage } from "../../Hooks/LanguageProvider";
 import { texts } from "../../utils/texts/PageTexts";
 import { AllTexts, Language } from "../../utils/texts/types";
 import { ProjectsData } from "../../data/ProjectsData/projectsData";
+import Reveal from "../../utils/elements/Reveal";
 
 const Projects: React.FC = () => {
   const { language } = useLanguage();
@@ -70,7 +71,9 @@ const Projects: React.FC = () => {
       w="100vw"
       id="projects"
     >
-      <Text fz={50}>{currentText.title}</Text>
+      <Reveal withBackground>
+        <Text fz={50}>{currentText.title}</Text>
+      </Reveal>
       <Flex
         align="center"
         justify="center"

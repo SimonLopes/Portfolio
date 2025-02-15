@@ -5,6 +5,7 @@ import { texts } from "../../utils/texts/PageTexts";
 import { AllTexts, Language } from "../../utils/texts/types";
 import { TechnologiesList } from "../../data/TechnologiesData/technologiesList";
 import Slider from "./Slider";
+import Reveal from "../../utils/elements/Reveal";
 
 const Technologies: React.FC = () => {
   const { language } = useLanguage();
@@ -22,10 +23,12 @@ const Technologies: React.FC = () => {
         mt={100}
         direction="column"
       >
-        <Text fz={50}>{currentText.title}</Text>
+        <Reveal withBackground>
+          <Text fz={50}>{currentText.title}</Text>
+        </Reveal>
         <Menu trigger="hover" openDelay={100} closeDelay={400} withArrow>
           <Menu.Target>
-            <Text fz={20} c="blue">
+            <Text fz={20} c="blue" h={0}>
               {currentText.description}
             </Text>
           </Menu.Target>

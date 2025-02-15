@@ -2,6 +2,7 @@ import { Flex, Text, Avatar } from "@mantine/core";
 import { texts } from "../../utils/texts/PageTexts";
 import { useLanguage } from "../../Hooks/LanguageProvider";
 import { AllTexts, Language } from "../../utils/texts/types";
+import Reveal from "../../utils/elements/Reveal";
 
 export default function Presentation() {
   const { language } = useLanguage();
@@ -30,20 +31,23 @@ export default function Presentation() {
           direction="column"
           align={{ base: "center", md: "start" }}
           ta={{ base: "center", md: "left" }}
-          
         >
-          <Text fz={{ base: 30, md: 50 }} fw="lighter">
-            <span style={{ fontWeight: 500 }}>{currentText.name}</span>{" "}
-            {currentText.role}
-          </Text>
-          <Text
-            fz={{ base: 18, md: 30 }}
-            fw="lighter"
-            maw={{ base: "100%", md: "60%" }}
-            mb={{ base: 0, md: 50 }}
-          >
-            {currentText.description}
-          </Text>
+          <Reveal withBackground>
+            <Text fz={{ base: 30, md: 50 }} fw="lighter">
+              <span style={{ fontWeight: 500 }}>{currentText.name}</span>{" "}
+              {currentText.role}
+            </Text>
+          </Reveal>
+          <Reveal withBackground={false}>
+            <Text
+              fz={{ base: 18, md: 30 }}
+              fw="lighter"
+              maw={{ base: "100%", md: "60%" }}
+              mb={{ base: 0, md: 50 }}
+            >
+              {currentText.description}
+            </Text>
+          </Reveal>
         </Flex>
         <Avatar
           src="./perfil.jpeg"

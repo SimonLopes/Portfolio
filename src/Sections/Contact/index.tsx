@@ -5,6 +5,7 @@ import { texts } from "../../utils/texts/PageTexts";
 import { AllTexts, Language } from "../../utils/texts/types";
 import SvgWithIcon from "../../utils/elements/svgIcon";
 import { ContactsList } from "../../data/ContactsData/contactsList";
+import Reveal from "../../utils/elements/Reveal";
 
 const Contact: React.FC = () => {
   const { language } = useLanguage();
@@ -22,9 +23,11 @@ const Contact: React.FC = () => {
       id="contacts"
     >
       <Flex align="center" justify="center" px={50}>
-        <Text fz={50} ta="center">
-          {currentText.title}
-        </Text>
+        <Reveal withBackground>
+          <Text fz={50} ta="center">
+            {currentText.title}
+          </Text>
+        </Reveal>
       </Flex>
       <Flex
         gap={50}
@@ -36,30 +39,32 @@ const Contact: React.FC = () => {
         px={30}
       >
         {ContactsList.map(({ name, url, contact, iconUrl }) => (
-          <Flex
-            flex={1}
-            key={name}
-            align="center"
-            justify="center"
-            direction="column"
-            w={150}
-          >
-            <SvgWithIcon
-              onClick={() => {
-                const newTab = window.open(url, "_blank");
-                if (newTab) {
-                  newTab.focus();
-                }
-              }}
-              src={iconUrl}
-              id={1}
-              color="#D9D9D9"
-              style={{ cursor: "pointer" }}
-            />
-            <Text mt={5} fz={15} fw="lighter">
-              {contact}
-            </Text>
-          </Flex>
+          <Reveal withBackground={false}>
+            <Flex
+              flex={1}
+              key={name}
+              align="center"
+              justify="center"
+              direction="column"
+              w={150}
+            >
+              <SvgWithIcon
+                onClick={() => {
+                  const newTab = window.open(url, "_blank");
+                  if (newTab) {
+                    newTab.focus();
+                  }
+                }}
+                src={iconUrl}
+                id={1}
+                color="#D9D9D9"
+                style={{ cursor: "pointer" }}
+              />
+              <Text mt={5} fz={15} fw="lighter">
+                {contact}
+              </Text>
+            </Flex>
+          </Reveal>
         ))}
       </Flex>
     </Flex>
