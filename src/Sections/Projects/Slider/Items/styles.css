@@ -1,0 +1,7 @@
+.item {
+    position: absolute;
+    transform: 
+        rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(350px)
+        scale(0.6)
+}

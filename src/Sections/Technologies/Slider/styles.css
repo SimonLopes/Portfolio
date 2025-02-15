@@ -1,0 +1,55 @@
+.banner-wrapper {
+  padding-block: 25px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.banner-wrapper .wrapper {
+  display: flex;
+}
+
+.wrapper:nth-child(2) {
+  transform: translateX(70px) translateY(-20px);
+}
+.wrapper:nth-child(3) {
+  transform: translateY(-40px);
+}
+.wrapper:nth-child(4) {
+  transform: translateX(70px) translateY(-60px);
+}
+
+.banner-wrapper .wrapper .images {
+  display: flex;
+}
+.image {
+  margin-inline: 10px;
+  transition: all 0.5s ease;
+}
+
+.image:hover {
+  transform: scale(110%);
+  filter: drop-shadow(rgba(255, 255, 255, 0.5) 0px 0px 10px);
+}
+
+.banner-wrapper:hover .wrapper .images {
+  animation-play-state: paused;
+}
+
+@keyframes swipe {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -1,0 +1,7 @@
+.slider{
+    width: 250px;
+    height: 380px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg));
+    transition: ease 1s transform;
+}
