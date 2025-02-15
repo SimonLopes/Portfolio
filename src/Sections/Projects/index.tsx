@@ -76,7 +76,7 @@ const Projects: React.FC = () => {
         justify="center"
         flex={1}
         w="100%"
-        mt={-100}
+        mt={0}
         className="projects-slider-container"
       >
         <Flex flex={1} align="center" justify="space-around">
